@@ -1,0 +1,507 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Smart_Light",
+    "description": "Title",
+    "version": "1.0.0"
+  },
+  "host": "localhost:",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "light",
+      "description": "Set your light preferences"
+    },
+    {
+      "name": "usage",
+      "description": "See your energy consumption"
+    },
+    {
+      "name": "auth",
+      "description": "Authenticate"
+    }
+  ],
+  "schemes": [
+    "https", "http"
+  ],
+  "paths": {
+    "/light/color": {
+      "put": {
+        "tags": [
+          "light"
+        ],
+        "summary": "set new preferences for the light",
+        "description": "",
+        "operationId": "setPreferences",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Set a color, a light level and a date",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LightPreferences"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "light"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getLightPreferences",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved data",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/LightPreferencesRow"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/light/routine": {
+      "put": {
+        "tags": [
+          "routine"
+        ],
+        "summary": "set new routine for the light",
+        "description": "",
+        "operationId": "setRoutine",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Set a start date, an end date, a color and a light-level.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LightRoutine"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "routine"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getLightRoutine",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved data",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/LightRoutineRow"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/usage": {
+      "get": {
+        "tags": [
+          "usage"
+        ],
+        "summary": "",
+        "description": "",
+        "operationId": "getUsage",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved data",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/Usage"
+            }
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Get all the users of the light bulb",
+        "description": "",
+        "operationId": "getUsers",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Seccessfully retrieved data",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      },
+      "post": {
+        "tags": ["users"],
+        "summary": "Creates a new User",
+        "description": "",
+        "operationId": "createUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The new user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/auth/register":{
+      "post": {
+        "tags": ["auth"],
+        "summary": "Register a new user",
+        "description": "",
+        "operationId": "registerUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The new user",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserRegister"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/auth/login":{
+      "post": {
+        "tags": ["auth"],
+        "summary": "  Login a user",
+        "description": "",
+        "operationId": "loginUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in":"body",
+            "name":"body",
+            "description": "Login data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+      }
+    }
+    },
+    "/auth/logout":{
+      "get": {
+        "tags": ["auth"],
+        "summary": "Logout a user",
+        "description": "",
+        "operationId": "logoutUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged out"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+    },
+  "definitions": {
+    "LightPreferences": {
+      "type": "object",
+      "required": [
+        "color", "light_level"
+      ],
+      "properties": {
+        "color": {
+          "type": "string",
+          "example": "blue"
+        },
+        "light_level": {
+          "type": "integer",
+          "example": "10%"
+        }
+      }
+    },
+    "LightPreferencesRow": {
+      "type": "object",
+      "required": [
+        "id",
+        "color",
+        "light_level",
+        "date",
+        "timestamp"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "1"
+        },
+        "color": {
+          "type": "string",
+          "example": "blue"
+        },
+        "light_level": {
+          "type": "integer",
+          "example": "10%"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "example": "30-05-2022 11:30"
+        },
+        "timestamp": {
+          "type": "string",
+          "example": "2022-05-31 15:30:00"
+        }
+      }
+    },
+    "LightRoutine": {
+      "type": "object",
+      "required": [
+        "color", "light_level", "end", "start"
+      ],
+      "properties": {
+        "color": {
+          "type": "string",
+          "example": "blue"
+        },
+        "light_level": {
+          "type": "integer",
+          "example": "10%"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "example": "30-05-2022 11:30"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "example": "30-05-2022 11:30"
+        }
+      }
+    },
+    "LightRoutineRow": {
+      "type": "object",
+      "required": [
+        "id",
+        "color",
+        "light_level",
+        "end",
+        "start"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "example": "1"
+        },
+        "color": {
+          "type": "string",
+          "example": "blue"
+        },
+        "light_level": {
+          "type": "integer",
+          "example": "10%"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "example": "30-05-2022 11:30"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "example": "30-05-2022 11:30"
+        }
+      }
+    },
+    "Usage": {
+      "type": "object",
+      "required": [
+        "kw"
+      ],
+      "properties": {
+        "kw": {
+          "type": "integer",
+          "example": "100"
+        }
+      }
+    },
+    "UserRegister":{
+      "type":"object",
+      "required": [
+        "name",
+        "password"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "nume"
+        },
+        "password": {
+          "type": "string",
+          "example": "parola"
+        }
+      }
+    },
+    "Login": {
+      "type": "object",
+      "required": [
+        "username",
+        "password"
+      ],
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "nume"
+        },
+        "password": {
+          "type": "string",
+          "example": "parola"
+        }
+      }
+    },
+    "User":{
+      "type":"object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Andrei"
+        }
+      }
+    }
+  }
+  }
+

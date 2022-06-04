@@ -9,7 +9,7 @@ def get_status():
 
     current_usage = get_db_connection().execute(
         'SELECT kw'
-        'FROM water_consumption'
+        'FROM energy_consumption'
         'ORDER BY data DESC'
     ).fetchone()
 
