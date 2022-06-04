@@ -2,7 +2,7 @@ from db_conn import get_db_connection
 from flask import Blueprint, request
 from auth import login_required
 
-routine = Blueprint('light', __name__)
+routine = Blueprint('routine', __name__)
 
 @routine.route('/light/routine', methods=['PUT'])
 @login_required
