@@ -5,7 +5,7 @@
     "description": "Title",
     "version": "1.0.0"
   },
-  "host": "localhost:",
+  "host": "localhost:5000",
   "basePath": "/",
   "tags": [
     {

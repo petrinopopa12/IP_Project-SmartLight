@@ -78,12 +78,8 @@ def background_thread():
 
 def run_socketio_app():
     create_app()
-    print(3)
     create_mqtt_app()
-    print(4)
     socketio.run(app, host='127.0.0.1', port=5000, use_reloader=False, debug=True)
 
 if __name__ == '__main__':
-    print(1)
     run_socketio_app()
-    print(2)
