@@ -19,10 +19,15 @@ pytest facilitează scrierea de teste mici și ușor de citit și poate fi extin
 **Required versions:**
 
 eventlet==0.33.1
+
 Flask==2.1.2
+
 Flask-MQTT==1.1.1
+
 Flask-SocketIO==5.2.0
+
 pytest==7.1.2
+
 requests==2.27.1
 
 
