@@ -17,6 +17,7 @@ pytest facilitează scrierea de teste mici și ușor de citit și poate fi extin
 
 
 **Required versions:**
+
 eventlet==0.33.1
 
 Flask==2.1.2
