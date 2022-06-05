@@ -20,11 +20,20 @@ requests==2.27.1
 
 
 **How to run:**
+
 •	Install the indicated version of Mosquitto
+
 •	Start a python console and run the following commands
+
  o	pip install -r requirements.txt
+ 
  o	python db_init.py
+ 
  o	python main.py
+ 
  o	python -m flask run
+ 
 •	To run the tests use the following command in a python console
+
  o	python -m pytest -v
+ 
