@@ -43,10 +43,8 @@ requests==2.27.1
  
     o	python db_init.py
  
-    o	python main.py
- 
-    o	python -m flask run
- 
+    o	python app.py
+  
 •	To run the tests use the following command in a python console
 
     o	python -m pytest -v
