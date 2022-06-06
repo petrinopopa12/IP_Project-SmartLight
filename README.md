@@ -8,7 +8,7 @@ Eclipse Mosquitto este un broker de mesaje open source (cu licență EPL/EDL) ca
 
 **Flask**
 
-Flask este un framework web, un modul Python care permite să dezvoltam cu ușurință aplicații web. Are un nucleu mic și ușor de extins; este un microframework care nu include un ORM (Object Relational Manager) sau alte caracteristici similare.
+Flask este un framework web, mai precis un modul Python care permite să dezvoltam cu ușurință aplicații web. Are un nucleu mic și ușor de extins; este un microframework care nu include un ORM (Object Relational Manager) sau alte caracteristici similare.
 
 **Pytest**
 
