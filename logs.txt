@@ -1,0 +1,6 @@
+Manual light bulb input: color=blue light_level=10.0 at Tue Jun  7 10:50:13 2022
+Automatic light level reduction: light_level=5.0 at Tue Jun  7 10:50:18 2022
+Manual light bulb input: color=blue light_level=40.0 at Tue Jun  7 12:47:49 2022
+Automatic light level reduction: light_level=20.0 at Tue Jun  7 12:47:59 2022
+Manual light bulb input: color=pink light_level=100.0 at Tue Jun  7 12:54:11 2022
+Automatic light level reduction: light_level=50.0 at Tue Jun  7 12:54:21 2022

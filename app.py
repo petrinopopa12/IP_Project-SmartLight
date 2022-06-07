@@ -38,9 +38,10 @@ def create_app():
     def welcome():
         global thread
         if thread is None:
-            thread = Thread(target=background_thread)
-            thread.daemon = True
-            thread.start()
+            thread1 = Thread(target=mqtt_thread)
+            thread1.daemon = True
+            thread1.start()
+
         return 'Welcome to Hue!'
 
     return app
@@ -62,7 +63,7 @@ def create_mqtt_app():
 
 # Start MQTT publishing
 # Function that every second publishes a message
-def background_thread():
+def mqtt_thread():
     count = 0
     while True:
         time.sleep(1)
@@ -72,6 +73,8 @@ def background_thread():
             message = json.dumps(get_status(), default=str)
         # Publish
         mqtt.publish('python/mqtt', message)
+        
+
 
 # App will now have to be run with `python app.py` as flask is now wrapped in socketio.
 # The following makes sure that socketio is also used
